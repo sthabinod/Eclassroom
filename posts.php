@@ -65,6 +65,11 @@ $submitted_query =  "select * from submission";
 									{
 										echo "<p> -By $tea[username]</p>";
 									}
+						
+										
+									$query2 = "SELECT * FROM assingment";
+									$run2 = mysqli_query($connection, $query2);
+									
 								echo "</div>
 								<div style='float:right;margin-left:30px;'>
 									<p><span class='glyphicon glyphicon-ok'></span> Assignment</p>
@@ -74,7 +79,7 @@ $submitted_query =  "select * from submission";
 								</div>	
 
 								<p style='margin-right:100px;text-align:justify;'>$row[description]</p>
-								<p> File format: <a href='$row[file]'>$row[file]</a>	 <span></span></p>
+								<p> File format: <a href='download.php?file=$row[file]'>$row[file]</a>	 <span></span></p>
 													";
 																$date = date("Y-m-d");
 																$dead = $row['deadline'];
@@ -85,10 +90,12 @@ $submitted_query =  "select * from submission";
 						
 									
 							else {
+								
 								echo "
-								<div >
-										<p> <a style='width:100%;margin-top:30px;' href='#' class='btn btn-success' role='button'>Download assignment</a>
-												
+								<div >";
+								
+										
+									echo "
 										<p> <a style='width:100%;' href='submit_assignment.php?assignment=$row[id]' class='btn btn-link' role='button'>Submit assignment</a> </div>" ;
 							}
 								echo "
@@ -137,8 +144,7 @@ $submitted_query =  "select * from submission";
 
 								
 								<p>$row[file] <span><i>Download</i></span></p>
-								<p> <a style='width:100%;' href='#' class='btn btn-success' role='button'>Download routine</a></p>
-							</div>
+								<p> <a style='width:100%;'  class='btn btn-success' role='button' href='download.php?file=$row[file]'>Download routine</a> </p>
 						</div>
 
 					

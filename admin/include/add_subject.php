@@ -92,8 +92,7 @@ else {
 					<thead>
 						<tr>
 							<th scope="col">Title</th>
-							<th scope="col">Delete</th>
-							<th scope="col">Edit</th>
+							
 						</tr>
 					</thead>
 					<tbody>
@@ -102,8 +101,7 @@ else {
 						{
 							echo "<tr>
 							<td>$row[title]</td>
-							<td><a href=''>Del</a></td>
-							<td><a href=''>Edit</a></td>
+							
 						</tr>";
 						}
 						

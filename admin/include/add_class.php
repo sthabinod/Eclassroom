@@ -197,8 +197,6 @@ else {
 						{
 							echo "<tr>
 							<td>$row[title]</td>
-							<td><a href='index.php?check=class&delete_class=$row[id]'>Del</a></td>
-							<td><a href='index.php?check=class&edit_class=$row[id]'>Edit</a></td>
 						</tr>";
 						}
 						

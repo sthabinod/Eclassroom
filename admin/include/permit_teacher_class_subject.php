@@ -129,7 +129,7 @@ else {
 						</select>
 					</div>
 					<div class="form-group">
-						<input type="submit" class="btn btn-primary btn-lg btn-block" name="submit">
+						<input type="submit" class="btn btn-success btn-lg btn-block" name="submit">
 						<br>
 
 					</div>

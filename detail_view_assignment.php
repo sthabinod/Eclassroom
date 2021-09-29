@@ -117,7 +117,7 @@ if(!$result_submission){
 		  }
 	  
 		 
-		  echo "<td>$row[file] <button style='float:right;' class='btn btn-success'>      <a href='download.php?student=$row[student_]&assignment=$row[assignment]' style='color:white;'>Download</a> </button></td>";
+		  echo "<td>$row[file] <button style='float:right;' class='btn btn-success'>      <a href='download.php?file=$row[file]' style='color:white;'>Download</a> </button></td>";
     echo "</tr>";
 		  
 		  

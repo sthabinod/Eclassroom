@@ -26,7 +26,9 @@ if(!$result_class){
 if(isset($_POST['submit'])){
 	$title = $_POST['title'];
 	$description = $_POST['description'];
-	$file = $_POST['file'];
+	$file = $_FILES['file']['name'];
+	$temp_file = $_FILES['file']['tmp_name'];
+	$destination = 'uploads/'.$file;
 	$type = $_POST['type'];
 	$subject = $_POST['subject'];
 	$class = $_POST['class'];
@@ -62,6 +64,7 @@ if(isset($_POST['submit'])){
 			die(mysqli_error($connection));
 		}
 		else{
+			move_uploaded_file($temp_file,$destination);
 			if($type == 'study_material')
 					echo "
 			<div class='container'>
@@ -102,7 +105,7 @@ include "include/navigation.php";
 
 		<div class="row">
 			<div class="col-md-12">
-				<form class="col-md-12" action="upload_others.php" method="POST">
+				<form class="col-md-12" action="upload_others.php" enctype="multipart/form-data" method="POST">
 
 					<div class="form-group">
 						<input type="text" required name="title" class="form-control form-control-lg" placeholder="Title">

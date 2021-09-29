@@ -28,7 +28,9 @@ if(isset($_POST['submit'])){
 	$title = $_POST['title'];
 	$description = $_POST['description'];
 	$deadline = $_POST['dead_line'];
-	$file = $_POST['file'];
+	$file = $_FILES['file']['name'];
+	$temp_file = $_FILES['file']['tmp_name'];
+	$destination = 'uploads/'.$file;
 	$subject = $_POST['subject'];
 	$class = $_POST['class'];
 	$upload_date = date("Y/m/d");
@@ -53,7 +55,9 @@ if(isset($_POST['submit'])){
 	}
 	else
 	{
-		$query_assignment = "Insert into assingment(title,description,file, deadline,upload_date, class_, subject,teacher) ";
+		
+		
+			$query_assignment = "Insert into assingment(title,description,file, deadline,upload_date, class_, subject,teacher) ";
 		$query_assignment .= "values('$title','$description','$file', '$deadline', '$upload_date', $class, $subject, $teacher_db)";
 		
 		$result = mysqli_query($connection, $query_assignment);
@@ -63,6 +67,7 @@ if(isset($_POST['submit'])){
 			die(mysqli_error($connection));
 		}
 		else{
+			move_uploaded_file($temp_file,$destination);
 			echo "
 			<div class='container'>
 			<div class='alert alert-success'>
@@ -71,9 +76,12 @@ if(isset($_POST['submit'])){
 			</div>
 			";
 		}
+		}
+		
+		
 		
 	}
-} 
+ 
 
 else {
 	echo "";
@@ -90,7 +98,7 @@ include "include/navigation.php";
 
 		<div class="row">
 			<div class="col-md-12">
-				<form class="col-md-12" action="" method="POST">
+				<form class="col-md-12" action="" name="form" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
 						<input type="text" name="title" required class="form-control form-control-lg" placeholder="Title">
 					</div>

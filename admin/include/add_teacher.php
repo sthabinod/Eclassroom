@@ -39,6 +39,17 @@ $result_get_teacher = mysqli_query($connection, $query_get_teacher);
 	</div>
 
 	<?php 
+	
+	
+	
+	
+if(isset($_POST['delete'])){
+	echo "Delete Post request";
+}
+	else
+	{
+		echo "No post requestss";
+	}
 if(isset($_POST['submit'])){
 	$first_name = $_POST['first_name'];
 	$last_name = $_POST['last_name'];
@@ -135,8 +146,7 @@ else {
 							<th scope="col">Last name</th>
 							<th scope="col">Username</th>
 							<th scope="col">Email</th>
-							<th scope="col">Edit</th>
-							<th scope="col">Delete</th>
+						
 						</tr>
 					</thead>
 					<tbody>
@@ -148,8 +158,7 @@ else {
 							<td>$row[last_name]</td>
 							<td>$row[username]</td>
 							<td>$row[email]</td>
-							<td><a href=''>Del</a></td>
-							<td><a href=''>Edit</a></td>
+							
 						</tr>";
 						}
 						

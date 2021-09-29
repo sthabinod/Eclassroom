@@ -10,7 +10,10 @@ ini_set('display_errors', 0);
 //POST request to add assignment
 if(isset($_POST['submit'])){
 
-	$file = $_POST['file'];
+	$file = $_FILES['file']['name'];
+	$temp_file = $_FILES['file']['tmp_name'];
+	$destination = 'uploads/'.$file;
+	
 //	$file_temp = $FILES['file']['tmp_name'];
 	$assignment = $_GET['assignment'];
 	$current_date = date("Y/m/d");
@@ -52,6 +55,7 @@ if(isset($_POST['submit'])){
 			die(mysqli_error($connection));
 		}
 		else{
+			move_uploaded_file($temp_file,$destination);
 			echo "
 			<div class='container'>
 			<div class='alert alert-success'>
@@ -79,7 +83,7 @@ include "include/navigation.php";
 
 		<div class="row">
 			<div class="col-md-12">
-				<form class="col-md-12" action="" method="POST">
+				<form class="col-md-12" action="" method="POST" enctype="multipart/form-data">
 
 					<div class="form-group">
 						<input type="file" name="file" class="form-control form-control-lg">
